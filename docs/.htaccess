@@ -1,0 +1,4 @@
+# Browser se seedha is folder ki files nahi khulni chahiyen (PHP andar se use karta hai)
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>

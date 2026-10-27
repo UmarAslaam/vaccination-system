@@ -1,0 +1,519 @@
+/* =====================================================
+   VaxCare - Design System (Day 2)
+   Sab colors/fonts yahan :root mein hain. Rang badalna ho to sirf yahan badlo.
+   ===================================================== */
+
+:root {
+  --brand:        #0f766e;   /* main teal */
+  --brand-dark:   #115e59;
+  --brand-light:  #ccfbf1;
+  --accent:       #2563eb;   /* blue */
+  --bg:           #f4f8fa;   /* page ka background */
+  --text:         #1f2937;
+  --muted:        #6b7280;
+  --radius:       14px;
+  --shadow:       0 6px 24px rgba(15, 118, 110, 0.10);
+
+  /* Bootstrap ke apne colors ko hamare colors se badal do */
+  --bs-primary:        #0f766e;
+  --bs-primary-rgb:    15, 118, 110;
+  --bs-link-color:     #0f766e;
+  --bs-link-hover-color: #115e59;
+  --bs-body-font-family: 'Poppins', system-ui, sans-serif;
+  --bs-body-color:     var(--text);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.site-main { flex: 1; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: 600; color: #0f172a; }
+.text-muted { color: var(--muted) !important; }
+
+/* ---------- Buttons ---------- */
+.btn { border-radius: 10px; font-weight: 500; transition: all .2s ease; }
+.btn-primary {
+  --bs-btn-bg: var(--brand); --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand-dark); --bs-btn-hover-border-color: var(--brand-dark);
+  --bs-btn-active-bg: var(--brand-dark); --bs-btn-active-border-color: var(--brand-dark);
+  --bs-btn-disabled-bg: var(--brand); --bs-btn-disabled-border-color: var(--brand);
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--brand); --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand); --bs-btn-hover-border-color: var(--brand);
+  --bs-btn-active-bg: var(--brand); --bs-btn-active-border-color: var(--brand);
+}
+.btn:hover { transform: translateY(-1px); }
+
+/* ---------- Navbar ---------- */
+.site-navbar { box-shadow: 0 2px 12px rgba(0,0,0,.05); padding: .7rem 0; transition: box-shadow .2s; }
+.site-navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,.10); }
+.brand-text { font-weight: 700; font-size: 1.25rem; color: var(--brand); }
+.site-navbar .nav-link { font-weight: 500; color: #374151; padding: .5rem .9rem; border-radius: 8px; }
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link.active { color: var(--brand); background: var(--brand-light); }
+
+/* ---------- Cards ---------- */
+.card { border: 0; border-radius: var(--radius); box-shadow: var(--shadow); }
+.card-hover { transition: transform .25s ease, box-shadow .25s ease; }
+.card-hover:hover { transform: translateY(-6px); box-shadow: 0 14px 34px rgba(15,118,110,.18); }
+
+.icon-box {
+  width: 56px; height: 56px; border-radius: 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--brand-light); color: var(--brand); font-size: 1.6rem;
+}
+
+/* ---------- Forms ---------- */
+.form-control, .form-select {
+  border-radius: 10px; padding: .65rem .9rem; border: 1px solid #d1d5db;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--brand); box-shadow: 0 0 0 .2rem rgba(15,118,110,.15);
+}
+.form-label { font-weight: 500; font-size: .9rem; }
+
+/* ---------- Tables ---------- */
+.table thead th {
+  background: #f1f5f9; font-size: .8rem; text-transform: uppercase;
+  letter-spacing: .04em; color: #475569; border-bottom: 0; white-space: nowrap;
+}
+.table > :not(caption) > * > * { padding: .85rem 1rem; vertical-align: middle; }
+
+/* ---------- Page heading strip ---------- */
+.page-header {
+  background: linear-gradient(135deg, var(--brand), #14b8a6);
+  color: #fff; padding: 2.2rem 0; margin-bottom: 2rem;
+}
+.page-header h1, .page-header h2 { color: #fff; margin: 0; }
+.page-header p { margin: .3rem 0 0; opacity: .9; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: #0b2b2a; color: #9ca3af; }
+.site-footer a { color: #9ca3af; text-decoration: none; }
+.site-footer a:hover { color: #5eead4; }
+.footer-bottom { background: #082120; }
+
+/* ---------- Back to top ---------- */
+#backToTop {
+  position: fixed; right: 20px; bottom: 20px; width: 44px; height: 44px;
+  display: none; z-index: 1000; padding: 0;
+}
+
+/* ---------- Animation (page load par halka sa fade-in) ---------- */
+.fade-in-up { animation: fadeInUp .6s ease both; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 576px) {
+  .page-header { padding: 1.5rem 0; }
+  .table > :not(caption) > * > * { padding: .65rem .6rem; }
+}
+
+/* ---------- Day 3: Login / Register pages ---------- */
+.auth-wrapper {
+  padding: 3rem 0;
+  background: radial-gradient(circle at 10% 10%, var(--brand-light), transparent 40%),
+              radial-gradient(circle at 90% 90%, #dbeafe, transparent 40%);
+}
+.auth-card { border-radius: 20px; }
+.btn-check:checked + .btn-outline-primary { background: var(--brand); color: #fff; }
+.was-validated .form-control:valid, .form-control.is-valid { border-color: #d1d5db; background-image: none; }
+@media (max-width: 576px) { .auth-wrapper { padding: 1.5rem 0; } }
+
+/* =====================================================
+   Day 4: Admin panel layout
+   ===================================================== */
+body.admin-body { display: block; background: var(--bg); }
+
+.admin-sidebar {
+  position: fixed; top: 0; left: 0; bottom: 0; width: 260px;
+  background: #0b2b2a; color: #cbd5d1; padding: 1.2rem 1rem;
+  overflow-y: auto; z-index: 1040; transition: transform .25s ease;
+}
+.side-brand {
+  display: flex; align-items: center; gap: .6rem; padding: .3rem .6rem 1.2rem;
+  color: #fff; font-weight: 700; font-size: 1.25rem; text-decoration: none;
+}
+.side-label { font-size: .7rem; letter-spacing: .12em; color: #6b8f8b; padding: 0 .8rem; margin-bottom: .4rem; }
+.side-nav { display: flex; flex-direction: column; gap: .2rem; }
+.side-link {
+  display: flex; align-items: center; gap: .75rem; padding: .7rem .8rem;
+  border-radius: 10px; color: #cbd5d1; text-decoration: none; font-size: .93rem; transition: all .2s;
+}
+.side-link i { font-size: 1.1rem; }
+.side-link:hover { background: rgba(255,255,255,.08); color: #fff; }
+.side-link.active { background: var(--brand); color: #fff; box-shadow: 0 4px 14px rgba(15,118,110,.45); }
+.side-link.disabled { opacity: .5; cursor: not-allowed; }
+.side-link.disabled:hover { background: transparent; color: #cbd5d1; }
+
+.admin-content { margin-left: 260px; min-height: 100vh; display: flex; flex-direction: column; }
+.admin-topbar {
+  background: #fff; padding: .8rem 1.5rem; display: flex; justify-content: space-between;
+  align-items: center; position: sticky; top: 0; z-index: 1030; box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+.admin-main { flex: 1; padding: 1.5rem; }
+.admin-footer { text-align: center; padding: 1rem; font-size: .85rem; color: var(--muted); }
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%; background: var(--brand); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: .9rem;
+}
+
+/* Stat cards (dashboard) */
+.stat-card { padding: 1.3rem; display: flex; align-items: center; gap: 1rem; }
+.stat-card .stat-number { font-size: 1.8rem; font-weight: 700; line-height: 1; color: #0f172a; }
+.stat-card .stat-label { color: var(--muted); font-size: .85rem; margin-top: .25rem; }
+
+/* Mobile: sidebar chhup jata hai, button se khulta hai */
+.admin-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 1035; }
+@media (max-width: 991.98px) {
+  .admin-sidebar { transform: translateX(-100%); }
+  .admin-sidebar.open { transform: translateX(0); }
+  .admin-overlay.show { display: block; }
+  .admin-content { margin-left: 0; }
+  .admin-main { padding: 1rem; }
+  .admin-topbar { padding: .7rem 1rem; }
+}
+
+/* Bootstrap ka "subtle" primary background bhi hamare teal se match kare */
+:root { --bs-primary-bg-subtle: #ccfbf1; --bs-primary-text-emphasis: #0f766e; }
+
+/* =====================================================
+   Day 5: Mobile fixes for admin panel
+   ===================================================== */
+/* .card ki direction column hoti hai, isliye stat card mein icon upar aa raha tha */
+.stat-card { flex-direction: row; }
+.admin-content { min-width: 0; overflow-x: clip; }   /* koi cheez bahar nikle to side scroll na bane */
+.admin-main { min-width: 0; }
+.admin-topbar h5 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55vw; }
+
+@media (max-width: 575.98px) {
+  .stat-card { padding: .9rem; gap: .7rem; }
+  .stat-card .icon-box { width: 44px; height: 44px; font-size: 1.25rem; border-radius: 12px; flex-shrink: 0; }
+  .stat-card .stat-number { font-size: 1.4rem; }
+  .stat-card .stat-label { font-size: .75rem; }
+  .admin-main h4 { font-size: 1.15rem; }
+}
+
+/* =====================================================
+   Day 6: Responsive tables (mobile par har row ek card)
+   Istemal: <table class="table table-stack"> aur har <td data-label="Naam">
+   ===================================================== */
+@media (max-width: 767.98px) {
+  .table-stack, .table-stack tbody, .table-stack tr, .table-stack td { display: block; width: 100%; }
+  .table-stack thead { display: none; }
+
+  .table-stack tr {
+    border: 1px solid #e5e7eb; border-radius: 12px; background: #fff;
+    padding: .35rem 1rem; margin-bottom: .8rem;
+  }
+  .table-stack td {
+    position: relative; text-align: right; min-height: 2.3rem;
+    padding: .55rem 0 .55rem 42% !important;
+    border: 0; border-bottom: 1px dashed #e5e7eb; word-break: break-word;
+    white-space: normal !important;
+  }
+  .table-stack td:last-child { border-bottom: 0; }
+  .table-stack td::before {
+    content: attr(data-label); position: absolute; left: 0; top: .6rem; width: 38%;
+    text-align: left; font-weight: 600; font-size: .72rem; letter-spacing: .04em;
+    text-transform: uppercase; color: #64748b;
+  }
+  /* jo cell mobile par pehle chhupi thi, ab card mein poori dikhao */
+  .table-stack td.d-none { display: block !important; }
+  /* Actions wali cell (label nahi) aur "no data" wali row */
+  .table-stack td:not([data-label]) { padding-left: 0 !important; text-align: right; }
+  .table-stack td:not([data-label])::before { display: none; }
+  .table-stack td[colspan] { text-align: center; padding-left: 0 !important; }
+  .table-stack .btn { margin-top: .15rem; }
+}
+
+/* =====================================================
+   Day 7: Print (reports)
+   ===================================================== */
+.print-only { display: none; }
+
+@media print {
+  .admin-sidebar, .admin-topbar, .admin-footer, .admin-overlay, .no-print,
+  .alert, .site-navbar, #backToTop { display: none !important; }
+  .print-only { display: block !important; }
+  .admin-content { margin-left: 0 !important; }
+  .admin-main { padding: 0 !important; }
+  body, .admin-body { background: #fff !important; }
+  .card { box-shadow: none !important; border: 1px solid #ddd !important; }
+  .table-stack td { white-space: normal !important; }
+  a { text-decoration: none; color: inherit; }
+}
+
+/* Flex ke andar lamba text kate (truncate) to ye zaroori hai */
+.min-w-0 { min-width: 0; }
+
+/* =====================================================
+   Day 10: Hospital chunne wale cards
+   ===================================================== */
+.hospital-option { cursor: pointer; border: 2px solid transparent; transition: all .2s; height: 100%; }
+.hospital-option:hover { border-color: var(--brand-light); }
+.btn-check:checked + .hospital-option { border-color: var(--brand); background: #f0fdfa; }
+.was-validated .btn-check:invalid + .hospital-option { border-color: #dc3545; }
+
+/* =====================================================
+   Day 13: Landing page, animations, charts
+   ===================================================== */
+html { scroll-padding-top: 80px; }
+
+/* ---------- Scroll reveal (JS data-reveal wale elements ko khud lagata hai) ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.revealed { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .float-a, .float-b { animation: none !important; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; overflow: hidden; padding: 4.5rem 0 3.5rem;
+  background: radial-gradient(circle at 85% 10%, #ccfbf1 0, transparent 45%),
+              radial-gradient(circle at 5% 90%, #dbeafe 0, transparent 40%), var(--bg);
+}
+.hero h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.15; font-weight: 700; }
+.hero .lead { font-size: 1.1rem; max-width: 520px; }
+.hero-badge { background: #fff; color: var(--brand); border: 1px solid var(--brand-light); font-weight: 500; }
+.trust-row { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; color: var(--muted); font-size: .9rem; }
+.trust-row i { color: var(--brand); margin-right: .35rem; }
+
+.hero-visual { position: relative; max-width: 440px; margin: 0 auto; padding: 1.5rem 0; }
+.hero-card { background: #fff; border-radius: 20px; padding: 1.4rem; box-shadow: 0 20px 50px rgba(15,118,110,.18); }
+.hero-row { display: flex; justify-content: space-between; align-items: center; padding: .6rem 0; border-bottom: 1px dashed #e5e7eb; font-size: .9rem; }
+.hero-row:last-child { border-bottom: 0; }
+.float-chip {
+  position: absolute; background: #fff; border-radius: 14px; padding: .6rem .9rem; font-size: .8rem; font-weight: 500;
+  box-shadow: 0 10px 28px rgba(0,0,0,.12); display: flex; align-items: center; gap: .5rem; white-space: nowrap;
+}
+.float-a { top: -6px; right: -8px; animation: floaty 5s ease-in-out infinite; }
+.float-b { bottom: 4px; left: -10px; animation: floaty 6s ease-in-out infinite reverse; }
+@keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@media (max-width: 575.98px) { .float-a { right: 0; } .float-b { left: 0; } .hero { padding: 3rem 0 2.5rem; } }
+
+/* ---------- Stats strip ---------- */
+.stats-strip { margin-top: -2rem; position: relative; z-index: 2; }
+.stats-strip .card { padding: 1.4rem 1rem; text-align: center; }
+.stats-strip .num { font-size: 2rem; font-weight: 700; color: var(--brand); line-height: 1.1; }
+.stats-strip .lbl { color: var(--muted); font-size: .85rem; }
+
+/* ---------- Sections ---------- */
+.section { padding: 4.5rem 0 1rem; }
+.section-title { text-align: center; max-width: 640px; margin: 0 auto 2.5rem; }
+.section-title .eyebrow { color: var(--brand); font-weight: 600; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; }
+.section-title h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: .4rem 0 .6rem; }
+
+.feature-card { padding: 1.7rem; height: 100%; }
+.feature-card h5 { margin: 1rem 0 .4rem; font-size: 1.05rem; }
+.feature-card p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+/* How it works */
+.step { text-align: center; padding: 0 .5rem; }
+.step-num {
+  width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 1rem;
+  background: linear-gradient(135deg, var(--brand), #14b8a6); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.3rem;
+  box-shadow: 0 8px 20px rgba(15,118,110,.3);
+}
+.step h5 { font-size: 1rem; }
+.step p { color: var(--muted); font-size: .9rem; margin: 0; }
+
+/* Role cards */
+.role-card { padding: 1.8rem; height: 100%; }
+.role-card ul { list-style: none; padding: 0; margin: 1rem 0 1.4rem; }
+.role-card li { padding: .3rem 0; font-size: .92rem; color: #374151; }
+.role-card li i { color: var(--brand); margin-right: .5rem; }
+
+/* FAQ */
+.accordion-item { border: 0; border-radius: var(--radius) !important; box-shadow: var(--shadow); margin-bottom: .8rem; overflow: hidden; }
+.accordion-button { font-weight: 500; }
+.accordion-button:not(.collapsed) { background: var(--brand-light); color: var(--brand-dark); box-shadow: none; }
+.accordion-button:focus { box-shadow: 0 0 0 .2rem rgba(15,118,110,.15); border-color: var(--brand); }
+
+/* CTA band */
+.cta-band {
+  background: linear-gradient(135deg, var(--brand), #14b8a6); color: #fff;
+  border-radius: 24px; padding: 3rem 1.5rem; text-align: center; margin-top: 4.5rem;
+}
+.cta-band h2 { color: #fff; }
+.cta-band .btn-light { color: var(--brand); font-weight: 600; }
+
+/* Contact */
+.contact-card { padding: 1.5rem; text-align: center; height: 100%; }
+
+/* ---------- Admin charts ---------- */
+.chart-box { position: relative; height: 260px; }
+.chart-empty { height: 260px; display: flex; align-items: center; justify-content: center; color: var(--muted); }
+
+/* =====================================================
+   Day 17: Landing page redesign + split login/register
+   ===================================================== */
+.text-gradient {
+  background: linear-gradient(90deg, #0f766e, #14b8a6 55%, #2563eb);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---------- Hero v2 ---------- */
+.hero2 {
+  position: relative; overflow: hidden; padding: 5rem 0 8rem;
+  background: linear-gradient(180deg, #ecfdf5 0%, #f0f9ff 60%, #f4f8fa 100%);
+}
+.hero2 .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .6; z-index: 0; }
+.blob-a { width: 440px; height: 440px; background: #99f6e4; top: -140px; right: -90px; }
+.blob-b { width: 380px; height: 380px; background: #bfdbfe; bottom: -60px; left: -110px; }
+.hero2 .container { position: relative; z-index: 1; }
+.hero2 h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.1; font-weight: 700; letter-spacing: -.02em; }
+.hero2 .lead { font-size: 1.1rem; max-width: 520px; }
+.hero-pill {
+  display: inline-flex; align-items: center; gap: .5rem; background: #fff; color: var(--brand);
+  border: 1px solid var(--brand-light); padding: .5rem 1rem; border-radius: 999px;
+  font-weight: 500; font-size: .85rem; box-shadow: 0 6px 18px rgba(15,118,110,.10);
+}
+.hero-wave { position: absolute; left: 0; right: 0; bottom: -1px; line-height: 0; z-index: 1; }
+.hero-wave svg { display: block; width: 100%; height: 80px; }
+.hero-login-link { color: var(--muted); font-size: .9rem; }
+
+.hero-art { position: relative; max-width: 470px; margin: 0 auto; padding: 2.2rem 0; }
+.hero-art .ring {
+  position: absolute; inset: 0; margin: auto; width: 96%; aspect-ratio: 1; border-radius: 50%;
+  background: conic-gradient(from 200deg, #ccfbf1, #dbeafe, #ccfbf1); opacity: .8; z-index: 0;
+}
+.hero-art .hero-card { position: relative; z-index: 1; }
+.float-c { bottom: 38%; right: -18px; animation: floaty 7s ease-in-out infinite; }
+@media (max-width: 575.98px) { .float-c { right: 0; } .hero2 { padding: 3.2rem 0 6.5rem; } }
+
+/* ---------- Stats strip v2 ---------- */
+.stats-strip { margin-top: -3.6rem; }
+.stat-ico {
+  width: 46px; height: 46px; border-radius: 14px; margin: 0 auto .7rem;
+  display: flex; align-items: center; justify-content: center; font-size: 1.35rem;
+  background: var(--brand-light); color: var(--brand);
+}
+
+/* ---------- Section bands ---------- */
+.sec { padding: 5rem 0; }
+.sec-white { background: #fff; }
+.sec .cta-band { margin-top: 0; }
+.sec-white .card:not(.stat-card) { box-shadow: 0 8px 28px rgba(15,23,42,.07); }
+
+/* Rang-birange icons */
+.icon-box.c-blue   { background: #dbeafe; color: #2563eb; }
+.icon-box.c-amber  { background: #fef3c7; color: #d97706; }
+.icon-box.c-violet { background: #ede9fe; color: #7c3aed; }
+.icon-box.c-green  { background: #dcfce7; color: #16a34a; }
+.icon-box.c-rose   { background: #ffe4e6; color: #e11d48; }
+
+/* ---------- Spotlight rows (text + sample preview) ---------- */
+.spot-eyebrow { color: var(--brand); font-weight: 600; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; }
+.spot h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin: .5rem 0 .8rem; }
+.check-list { list-style: none; padding: 0; margin: 1.2rem 0 1.6rem; }
+.check-list li { display: flex; gap: .7rem; align-items: flex-start; padding: .35rem 0; color: #374151; }
+.check-list i { color: var(--brand); font-size: 1.15rem; line-height: 1.4; }
+.sample-note { text-align: center; color: var(--muted); font-size: .78rem; margin-top: .8rem; }
+
+.mock-window { background: #fff; border-radius: 16px; box-shadow: 0 24px 60px rgba(15,23,42,.14); overflow: hidden; border: 1px solid #e5e7eb; }
+.mock-bar { background: #f1f5f9; padding: .65rem .9rem; display: flex; gap: .4rem; }
+.mock-bar span { width: 10px; height: 10px; border-radius: 50%; background: #fca5a5; }
+.mock-bar span:nth-child(2) { background: #fcd34d; }
+.mock-bar span:nth-child(3) { background: #86efac; }
+.mock-body { padding: 1.3rem; }
+.mock-alert {
+  display: flex; gap: .8rem; align-items: flex-start; background: #fffbeb; border: 1px solid #fde68a;
+  border-radius: 12px; padding: .9rem 1rem; font-size: .88rem; margin-bottom: 1rem;
+}
+.mock-alert i { color: #d97706; font-size: 1.2rem; }
+
+.mock-cert { border: 4px double var(--brand); border-radius: 10px; background: #fff; padding: 1.5rem 1.3rem; text-align: center; box-shadow: 0 24px 60px rgba(15,23,42,.14); }
+.mock-cert .t { font-size: 1.15rem; letter-spacing: .08em; text-transform: uppercase; color: var(--brand); font-weight: 700; margin: .4rem 0 0; }
+.mock-cert .nm { font-size: 1.3rem; font-weight: 700; border-bottom: 2px solid var(--brand); display: inline-block; padding: 0 1rem; margin: .5rem 0 .8rem; }
+.mock-cert table { font-size: .8rem; text-align: left; }
+.mock-cert .stamp {
+  display: inline-flex; align-items: center; gap: .4rem; border: 2px solid #16a34a; color: #16a34a;
+  border-radius: 8px; padding: .25rem .7rem; font-weight: 600; font-size: .8rem; transform: rotate(-4deg);
+}
+
+/* ---------- Vaccination timeline ---------- */
+.timeline { position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 1rem; }
+.timeline::before { content: ''; position: absolute; top: 21px; left: 4%; right: 4%; height: 4px; border-radius: 4px; background: linear-gradient(90deg, #99f6e4, #14b8a6, #0f766e); }
+.tl-item { position: relative; padding-top: 3.2rem; }
+.tl-dot { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 5px solid var(--brand); box-shadow: 0 0 0 5px #ccfbf1; }
+.tl-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem; text-align: center; height: 100%; }
+.tl-age { font-weight: 700; color: var(--brand); margin-bottom: .4rem; }
+.tl-card li { padding: .15rem 0; color: #374151; }
+@media (max-width: 767.98px) {
+  .timeline { grid-template-columns: 1fr; padding-left: 2.6rem; }
+  .timeline::before { top: 10px; bottom: 10px; left: 12px; right: auto; width: 4px; height: auto; }
+  .tl-item { padding-top: 0; }
+  .tl-dot { top: 18px; left: -2.6rem; transform: none; }
+  .tl-card { text-align: left; }
+}
+
+/* ---------- Role cards ---------- */
+.role-card { border-top: 4px solid var(--brand); }
+.role-card.alt { border-top-color: #2563eb; }
+
+/* ---------- CTA band: sajawat ---------- */
+.cta-band { position: relative; overflow: hidden; }
+.cta-band::before, .cta-band::after { content: ''; position: absolute; border-radius: 50%; background: rgba(255,255,255,.10); }
+.cta-band::before { width: 260px; height: 260px; top: -100px; left: -70px; }
+.cta-band::after { width: 320px; height: 320px; bottom: -150px; right: -80px; }
+.cta-band > * { position: relative; z-index: 1; }
+
+/* ---------- Login / Register: split layout ---------- */
+.auth-split { border-radius: 22px; overflow: hidden; }
+.auth-side {
+  background: linear-gradient(160deg, #0f766e 0%, #14b8a6 100%); color: #fff; padding: 2.6rem;
+  flex-direction: column; justify-content: center; position: relative; overflow: hidden;
+}
+.auth-side::before, .auth-side::after { content: ''; position: absolute; border-radius: 50%; background: rgba(255,255,255,.10); }
+.auth-side::before { width: 240px; height: 240px; top: -90px; right: -90px; }
+.auth-side::after { width: 200px; height: 200px; bottom: -80px; left: -60px; }
+.auth-side > * { position: relative; z-index: 1; }
+.auth-side h2 { color: #fff; font-size: 1.7rem; line-height: 1.25; margin: 1rem 0 .6rem; }
+.auth-side p { opacity: .92; }
+.auth-side ul { list-style: none; padding: 0; margin: 1.4rem 0 0; }
+.auth-side li { display: flex; gap: .7rem; align-items: flex-start; margin: .65rem 0; font-size: .95rem; }
+.auth-side li i { color: #99f6e4; font-size: 1.1rem; }
+
+/* =====================================================
+   Day 18: Toast notifications + confirm modal
+   ===================================================== */
+.toast-pos { top: 76px; z-index: 1100; }
+.toast-vax {
+  width: 360px; max-width: calc(100vw - 2rem); border: 0; border-radius: 14px;
+  background: #fff; box-shadow: 0 14px 40px rgba(15,23,42,.20); overflow: hidden;
+  border-left: 5px solid var(--tc, #0f766e);
+}
+.toast-vax .toast-ico { font-size: 1.5rem; color: var(--tc, #0f766e); line-height: 1.2; }
+.toast-vax .bar { height: 3px; background: var(--tc, #0f766e); width: 100%; animation: toastbar 5.5s linear forwards; }
+.toast-vax:hover .bar { animation-play-state: paused; }
+@keyframes toastbar { from { width: 100%; } to { width: 0; } }
+.toast-success { --tc: #16a34a; }
+.toast-danger  { --tc: #dc2626; }
+.toast-warning { --tc: #d97706; }
+.toast-info    { --tc: #2563eb; }
+@media (max-width: 575.98px) { .toast-pos { left: 0; } .toast-vax { width: 100%; max-width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .toast-vax .bar { animation: none; } }
+
+.confirm-ico {
+  width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 1rem;
+  background: #fee2e2; color: #dc2626; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+}
+#confirmModal .modal-content { border: 0; border-radius: 18px; box-shadow: 0 24px 60px rgba(15,23,42,.25); }
+
+/* Day 19: khali cell (jaise koi action na ho) mobile card mein jagah na ghere */
+@media (max-width: 767.98px) { .table-stack td:empty { display: none; } }
